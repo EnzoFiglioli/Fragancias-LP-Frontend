@@ -1,7 +1,89 @@
 export default function SignIn() {
-    return (
-        <div>
-        <h2>Sign In Page</h2>
-        </div>
-    )
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    console.log({ email, password });
+    // acá luego conectás tu auth (API, Firebase, etc.)
+  };
+
+  return (
+    <div style={styles.container}>
+      <form style={styles.form} onSubmit={handleSubmit}>
+        <h2 style={styles.title}>Iniciar sesión</h2>
+
+        <label style={styles.label}>
+          Email
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="ejemplo@email.com"
+            style={styles.input}
+          />
+        </label>
+
+        <label style={styles.label}>
+          Contraseña
+          <input
+            type="password"
+            name="password"
+            required
+            placeholder="********"
+            style={styles.input}
+          />
+        </label>
+
+        <button type="submit" style={styles.button}>
+          Entrar
+        </button>
+      </form>
+    </div>
+  );
+}
+
+const styles = {
+  container: {
+    marginTop: "120px",
+    display: "flex",
+    justifyContent: "center",
+  },
+  form: {
+    width: "320px",
+    padding: "24px",
+    borderRadius: "12px",
+    boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+    display: "flex",
+    flexDirection: "column",
+    gap: "16px",
+    backgroundColor: "#fff",
+  },
+  title: {
+    textAlign: "center",
+    marginBottom: "8px",
+  },
+  label: {
+    display: "flex",
+    flexDirection: "column",
+    fontSize: "14px",
+    gap: "6px",
+  },
+  input: {
+    padding: "10px",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
+  },
+  button: {
+    marginTop: "10px",
+    padding: "12px",
+    borderRadius: "8px",
+    border: "none",
+    backgroundColor: "#111",
+    color: "#fff",
+    fontWeight: "bold",
+    cursor: "pointer",
+  },
+};

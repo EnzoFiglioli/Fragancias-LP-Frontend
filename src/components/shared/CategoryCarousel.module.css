@@ -1,0 +1,74 @@
+.carouselWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.carouselTrack {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 1rem;
+}
+
+.carouselTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.categoryCard {
+  min-width: 220px;
+  max-width: 220px;
+  height: 280px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.categoryCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+}
+
+.cardImage {
+  width: 100%;
+  height: 75%;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardTitle {
+  text-align: center;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.scrollButton {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 0.9rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.scrollButton:hover {
+  background: #333;
+}

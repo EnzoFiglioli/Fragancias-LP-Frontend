@@ -4,30 +4,31 @@ type Picture = {
   productId: number;
 };
 
+type BaseProduct = {
+  name: string;
+  price: number;
+  pictures: Picture[];
+  stock: number;
+}
+
 type Category = {
   id: number;
   categoryName: string;
 };
 
-export interface Product {
+export interface Product extends BaseProduct {
   id: number;
-  name: string;
-  price: number;
-  pictures: Picture[];
   description: string;
   categoryId: number;
   category: Category;
-  stock: number;
 }
 
-export type ProductCart = {
+export interface ProductCart extends BaseProduct {
   id:number;
-  name: string;
   amount: number;
   count: number;
   category: string;
   picture: Picture
-  price: number;
 };
 
-
+export type CreateProduct = BaseProduct

@@ -1,0 +1,63 @@
+.footer {
+  background-color: #0f0f0f;
+  color: #fff;
+  margin-top: 4rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 3rem 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.brand h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.brand p {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.5;
+}
+
+.links h4,
+.info h4 {
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.links ul,
+.info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links li,
+.info li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: #fff;
+}
+
+.copy {
+  border-top: 1px solid #222;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #aaa;
+}

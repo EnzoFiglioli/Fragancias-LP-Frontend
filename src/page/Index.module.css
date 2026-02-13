@@ -54,22 +54,32 @@ h1 {
 }
 
 .main p {
-  color: #eaeaea;
   font-size: 1.2rem;
   max-width: 600px;
   text-align: center;
 }
+
 section {
-  background: #ffffff;
-  padding: 40px 30px;
-  border-radius: 12px;
   max-width: 900px;
   margin: 60px auto;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .cardContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+}
+
+.title{
+  text-align: center;
+  font-size: 2.2rem;
+  font-family: "Courier New", Courier, monospace;
+  margin-bottom: 40px;
+}
+
+.categoriesContainer {
+  display: grid;
+  grid-template-columns: repeat(1fr, 5);
+  grid-template-rows: 1fr;
+  gap: 2rem;
 }

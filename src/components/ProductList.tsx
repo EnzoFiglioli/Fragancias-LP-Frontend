@@ -1,13 +1,13 @@
 import type { Product } from "../@types";
 import styles from "../page/Products.module.css";
 import { Link } from "react-router-dom";
-import { currencyFormatter } from "../utils/currencyFormatter";
 
 type Props = {
   products: Product[];
+  title: string
 };
 
-const ProductList = ({ products }: Props) => {
+const ProductList = ({ products, title }: Props) => {
   if (products.length === 0) {
     return (
       <section>
@@ -19,8 +19,7 @@ const ProductList = ({ products }: Props) => {
   }
   return (
     <section className={styles.container}>
-      <h2 className={styles.title}>Nuestros productos</h2>
-
+      <h2 className={styles.title}>{title}</h2>
       <div className={styles.grid}>
         {products.map((product: Product) => (
           <article key={product.id} className={styles.card}>
@@ -31,7 +30,7 @@ const ProductList = ({ products }: Props) => {
             >
               <picture className={styles.picture}>
                 <img
-                  src={product.pictures[0].url}
+                  src={product.pictures[0]?.url ?? ""}
                   alt={product.name}
                   className={styles.image}
                 />
@@ -42,9 +41,6 @@ const ProductList = ({ products }: Props) => {
 
               <div className={styles.info}>
                 <h3>{product.name}</h3>
-                <p className={styles.price}>
-                  {currencyFormatter(product.price)}
-                </p>
               </div>
             </Link>
           </article>

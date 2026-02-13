@@ -8,6 +8,7 @@ import { currencyFormatter } from "../utils/currencyFormatter";
 import { useDispatch } from "react-redux";
 import { addElement } from "../app/core/slice/cartSlice";
 import type { AppDispatch } from "../app/core/redux/store";
+import Breadcrumb from "./shared/BreadCumb";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -30,60 +31,63 @@ const ProductDetail = () => {
   }
 
   return (
-    <div className={style.container}>
-      <figure className={style.media}>
-        <img
-          className={style.image}
-          src={product.pictures[0].url}
-          alt={product.name}
-          loading="lazy"
-        />
-      </figure>
+    <div style={{marginTop:"100px"}}>
+      <Breadcrumb category={product.category.categoryName} />
+      <div className={style.container}>
+        <figure className={style.media}>
+          <img
+            className={style.image}
+            src={product.pictures[0].url}
+            alt={product.name}
+            loading="lazy"
+          />
+        </figure>
 
-      <section className={style.details}>
-        <header className={style.header}>
-          <h1 className={style.title}>{product.name}</h1>
-        </header>
+        <section className={style.details}>
+          <header className={style.header}>
+            <h1 className={style.title}>{product.name}</h1>
+          </header>
 
-        <article
-          className={style.description}
-          dangerouslySetInnerHTML={{
-            __html: formatter(product.description),
-          }}
-        />
-        <aside
-          style={{
-            color: "#000",
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-            marginTop: "1rem",
-            fontWeight: "600",
-          }}
-        >
-          <span>Stock: {product.stock}</span>
-          <span className={style.price}>
-            {currencyFormatter(product.price)}
-          </span>
-        </aside>
-        <div className={style.actions}>
-          <button
-            className={style.primary}
-            onClick={() => {
-              dispatch(
-                addElement({
-                  id: product.id,
-                  picture: product.pictures[0],
-                  name: product.name,
-                  price: product.price,
-                }),
-              );
+          <article
+            className={style.description}
+            dangerouslySetInnerHTML={{
+              __html: formatter(product.description),
+            }}
+          />
+          <aside
+            style={{
+              color: "#000",
+              display: "flex",
+              justifyContent: "space-around",
+              alignItems: "center",
+              marginTop: "1rem",
+              fontWeight: "600",
             }}
           >
-            Agregar al carrito
-          </button>
-        </div>
-      </section>
+            <span>Stock: {product.stock}</span>
+            <span className={style.price}>
+              {currencyFormatter(product.price)}
+            </span>
+          </aside>
+          <div className={style.actions}>
+            <button
+              className={style.primary}
+              onClick={() => {
+                dispatch(
+                  addElement({
+                    id: product.id,
+                    picture: product.pictures[0].url,
+                    name: product.name,
+                    price: product.price,
+                  }),
+                );
+              }}
+            >
+              Agregar al carrito
+            </button>
+          </div>
+        </section>
+      </div>
     </div>
   );
 };

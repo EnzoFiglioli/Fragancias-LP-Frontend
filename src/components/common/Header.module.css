@@ -1,56 +1,126 @@
+/* HEADER */
+
 .header {
   position: fixed;
-
+  width: 100%;
   top: 0;
+  left: 0;
+  padding: 0 2rem;
   height: 70px;
-  width: calc(100% - 80px);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-
-  padding: 0 40px;
-  z-index: 100;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  justify-content: space-between;
+  transition: background 0.3s ease;
+  z-index: 1000;
 }
 
-/* HOME */
 .transparent {
-  background-color: transparent;
-  box-shadow: none;
+  background: transparent;
 }
 
-/* OTRAS RUTAS */
 .solid {
-  background-color: #ffffff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: #111;
 }
 
-.logo {
-  font-size: 1.8rem;
-  font-weight: bold;
+/* NAV DESKTOP */
+
+.nav {
+  display: block;
 }
 
-/* Links */
 .nav__links {
   display: flex;
-  gap: 30px;
+  gap: 2rem;
   list-style: none;
 }
 
 .nav__links a {
   text-decoration: none;
-  color: #333;
+  color: white;
   font-weight: 500;
 }
 
-/* En home los links claros */
-.transparent .nav__links a,
-.transparent .logo {
-  color: #ffffff;
+/* HAMBURGER */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 3500;
 }
 
-/* En otras páginas */
-.solid .nav__links a,
-.solid .logo {
-  color: #111;
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+/* Animación X */
+.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* MOBILE MENU */
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 260px;
+  height: 100vh;
+  background: #111;
+  padding: 6rem 2rem;
+  transition: right 0.3s ease;
+  z-index: 2000;
+}
+
+.mobileMenu.open {
+  right: 0;
+}
+
+.mobileMenu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mobileMenu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+/* OVERLAY */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 1500;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
 }
