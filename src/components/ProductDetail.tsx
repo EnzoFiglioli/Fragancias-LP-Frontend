@@ -31,7 +31,7 @@ const ProductDetail = () => {
   }
 
   return (
-    <div style={{marginTop:"100px"}}>
+    <div style={{ marginTop: "100px" }}>
       <Breadcrumb category={product.category.categoryName} />
       <div className={style.container}>
         <figure className={style.media}>
@@ -76,9 +76,18 @@ const ProductDetail = () => {
                 dispatch(
                   addElement({
                     id: product.id,
-                    picture: product.pictures[0].url,
+                    picture: {
+                      url: product.pictures[0].url,
+                      id: product.pictures[0].id,
+                      productId: product.pictures[0].productId,
+                    },
                     name: product.name,
                     price: product.price,
+                    amount: 0,
+                    count: 0,
+                    category: "",
+                    pictures: [],
+                    stock: 0
                   }),
                 );
               }}
