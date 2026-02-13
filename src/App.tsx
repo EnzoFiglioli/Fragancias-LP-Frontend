@@ -5,7 +5,7 @@ import ProductDetail from "./components/ProductDetail";
 import { Footer } from "./components/common/Footer";
 import ProductsPage from "./page/ProductsPage";
 import CartPage from "./page/CartPage";
-import CreateProduct from "./page/CreateProduct";
+// import CreateProduct from "./page/CreateProduct";
 import SignIn from "./page/SignIn";
 import ProductBrand from "./page/ProductBrand";
 
@@ -20,7 +20,7 @@ function App() {
         <Route path="/products/brand/:brand" element={<ProductBrand />} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/create" element={<CreateProduct />} />
+        {/*<Route path="/create" element={<CreateProduct />} />*/}
       </Routes>
       <Footer />
     </BrowserRouter>
