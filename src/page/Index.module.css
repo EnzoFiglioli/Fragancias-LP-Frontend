@@ -1,5 +1,5 @@
 .main {
-  background: url("../public/ENVIOMINIMO_BTOP_DESK_ENAMORADOS.jpg") no-repeat
+  background: url("/ENVIOMINIMO_BTOP_DESK_ENAMORADOS.jpg") no-repeat
     center center;
   background-size: cover;
   min-height: 100dvh;
@@ -21,13 +21,13 @@
 
 @keyframes changeBackground {
   0% {
-    background-image: url("../public/GENERICO_BCATEGORY_DESK.jpg");
+    background-image: url("/GENERICO_BCATEGORY_DESK.jpg");
   }
   50% {
-    background-image: url("../public/ENVIOMINIMO_BTOP_DESK_ENAMORADOS.jpg");
+    background-image: url("/ENVIOMINIMO_BTOP_DESK_ENAMORADOS.jpg");
   }
   100% {
-    background-image: url("../public/desk_hero_perfumaria_01.jpg");
+    background-image: url("/desk_hero_perfumaria_01.jpg");
   }
 }
 
