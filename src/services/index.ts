@@ -5,6 +5,8 @@ type Filter = {
   category?: string;
 };
 
+const baseDir : string = "https://api-server-malipi.onrender.com";
+
 export const getAllProducts = async (filter?: Filter) => {
   const params = new URLSearchParams();
 
@@ -17,7 +19,7 @@ export const getAllProducts = async (filter?: Filter) => {
   }
 
   const queryString = params.toString();
-  const url = queryString ? `/api/products?${queryString}` : `/api/products`;
+  const url = queryString ? `${baseDir}/api/products?${queryString}` : `${baseDir}/api/products`;
 
   const response = await fetch(url);
 
@@ -29,7 +31,7 @@ export const getAllProducts = async (filter?: Filter) => {
 };
 
 export const getById = async (id: string) => {
-  const response = await fetch("/api/products/" + id);
+  const response = await fetch(`${baseDir}/api/products/` + id);
   if (!response.ok) {
     throw new Error("Failed to fetch products");
   }
@@ -38,7 +40,7 @@ export const getById = async (id: string) => {
 };
 
 export const create = async (product: Product) => {
-  const response = await fetch("/api/products", {
+  const response = await fetch(`${baseDir}/api/products`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -55,7 +57,7 @@ export const create = async (product: Product) => {
 
 export const getAllOffers = async () => {
   try {
-    const response = await fetch("/api/products/offers");
+    const response = await fetch(`${baseDir}/api/products/offers`);
 
     if (!response.ok) throw new Error("Failed to find products in offers");
 
