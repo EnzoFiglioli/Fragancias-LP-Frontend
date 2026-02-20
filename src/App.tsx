@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 function App() {
   useEffect(() => {
-    fetch("https://tu-api.onrender.com/health")
+    fetch("https://api-server-malipi.onrender.com/api/health")
       .catch(() => {});
   }, []);  
   return (
