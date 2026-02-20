@@ -23,3 +23,5 @@ cd ./Fragancias-LP-Frontend/
 npm install
 npm run dev
 ```
+## 🔗 Repositorio Backend
+👉 [Ver backend](https://github.com/EnzoFiglioli/Fragancias-LP-Backend)
