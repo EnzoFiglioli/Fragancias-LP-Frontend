@@ -5,7 +5,7 @@ type Filter = {
   category?: string;
 };
 
-const baseDir : string = "https://api-server-malipi.onrender.com";
+const baseDir : string = "https://fragancias-lp-backend.vercel.app";
 
 export const getAllProducts = async (filter?: Filter) => {
   const params = new URLSearchParams();
