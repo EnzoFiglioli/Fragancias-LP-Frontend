@@ -10,6 +10,10 @@ import whatsapp from "/WhatsApp.svg.webp";
 import { useState } from "react";
 import { updateAmount } from "../app/core/slice/cartSlice";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+
+import styles from "./CartPage.module.css";
+import EmptyCart from "../components/EmptyCart";
 
 const phone = "";
 
@@ -39,60 +43,48 @@ const CartPage = () => {
   })();
 
   if (cartList.length === 0) {
-    return (
-      <section>
-        <h2>Carrito</h2>
-        <p>No hay productos en el carrito</p>
-      </section>
-    );
+    return <EmptyCart />;
   }
 
   return (
-    <motion.div
+    <motion.main
+      className={styles.cartContainer}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
     >
-      <h2>Carrito</h2>
+      <h2 className={styles.pageTitle}>Carrito</h2>
 
-      <section>
+      <section className={styles.cartList} aria-live="polite">
         {cartList.map((item: ProductCart) => (
-          <article
-            key={item.id}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              padding: "8px 0",
-            }}
-          >
+          <article key={item.id} className={styles.cartItem}>
             <img
+              className={styles.itemImage}
               src={item.picture.url}
               alt={item.name}
-              style={{ width: "50px", height: "50px" }}
             />
 
-            <p style={{ flex: 1, marginLeft: "10px" }}>{item.name}</p>
+            <div className={styles.itemInfo}>
+              <p className={styles.itemName}>{item.name}</p>
+            </div>
 
-            <p>{currencyFormatter(item.price)}</p>
+            <div className={styles.itemPrice}>{currencyFormatter(item.price)}</div>
 
-            <div>
+            <div className={styles.qtyControls}>
               <button
-                style={{
-                  opacity: item.amount > 0 ? "1" : "0.5",
-                }}
-                onClick={() =>
-                  dispatch(updateAmount({ id: item.id, type: "DECREASE" }))
-                }
+                aria-label={`Disminuir cantidad de ${item.name}`}
+                onClick={() => dispatch(updateAmount({ id: item.id, type: "DECREASE" }))}
+                style={{ opacity: item.amount > 0 ? 1 : 0.5 }}
               >
                 -
               </button>
-              <span style={{ margin: "0 10px" }}>{item.amount}</span>
+
+              <div className={styles.qtyCount} aria-live="off">{item.amount}</div>
+
               <button
-                onClick={() =>
-                  dispatch(updateAmount({ id: item.id, type: "INCREASE" }))
-                }
+                aria-label={`Aumentar cantidad de ${item.name}`}
+                onClick={() => dispatch(updateAmount({ id: item.id, type: "INCREASE" }))}
               >
                 +
               </button>
@@ -101,39 +93,24 @@ const CartPage = () => {
         ))}
       </section>
 
-      <section style={{ marginTop: "20px" }}>
-        <h4
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <span>TOTAL</span>
-          <span>{currencyFormatter(total)}</span>
+      <section className={styles.totalSection}>
+        <div>
+          <div className={styles.totalLabel}>TOTAL</div>
+          <div>{currencyFormatter(total)}</div>
+        </div>
 
-          <button
-            disabled
-            style={{
-              opacity: disabled ? "0.3" : "1",
-              backgroundColor: "#26ac53",
-              color: "#fff",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "8px 12px",
-              borderRadius: "6px",
-              border: "none",
-              cursor: "pointer",
-            }}
-            onClick={() => window.open(whatsappUrl(phone, message), "_blank")}
-          >
-            <img src={whatsapp} alt="WhatsApp" width={20} height={20} />
-            Encargar por WhatsApp
-          </button>
-        </h4>
+        <button
+          className={styles.checkoutBtn}
+          disabled={disabled}
+          aria-disabled={disabled}
+          onClick={() => window.open(whatsappUrl(phone, message), "_blank")}
+          title={disabled ? "Disponible en próximas versiones" : "Encargar por WhatsApp"}
+        >
+          <img src={whatsapp} alt="WhatsApp" width={18} height={18} />
+          Encargar por WhatsApp
+        </button>
       </section>
-    </motion.div>
+    </motion.main>
   );
 };
 
