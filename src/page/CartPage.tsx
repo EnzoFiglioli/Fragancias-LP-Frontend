@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import type { RootState } from "../app/core/redux/store";
 
 import { handlerSum } from "../utils/handlers/handlerSum";
@@ -40,10 +41,95 @@ const CartPage = () => {
 
   if (cartList.length === 0) {
     return (
-      <section>
-        <h2>Carrito</h2>
-        <p>No hay productos en el carrito</p>
-      </section>
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+        style={{
+          maxWidth: "640px",
+          margin: "40px auto",
+          padding: "32px 24px",
+          borderRadius: "28px",
+          background: "linear-gradient(135deg, #fffaf7 0%, #f4efe8 100%)",
+          boxShadow: "0 24px 50px rgba(103, 73, 49, 0.12)",
+          textAlign: "center",
+          border: "1px solid rgba(130, 100, 80, 0.08)",
+        }}
+      >
+        <div
+          style={{
+            width: "120px",
+            height: "120px",
+            margin: "0 auto 18px",
+            display: "grid",
+            placeItems: "center",
+            borderRadius: "32px",
+            background: "linear-gradient(135deg, #c9a381 0%, #7d5541 100%)",
+            boxShadow: "0 20px 36px rgba(125, 85, 65, 0.24)",
+            color: "#fff",
+            fontSize: "3.2rem",
+          }}
+          aria-label="Carrito vacío"
+        >
+          🛍️
+        </div>
+
+        <p
+          style={{
+            margin: "0 0 10px",
+            color: "#8b6b55",
+            fontSize: "0.82rem",
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            fontWeight: 700,
+          }}
+        >
+          Tu carrito
+        </p>
+
+        <h2
+          style={{
+            margin: "0 0 14px",
+            color: "#2d211c",
+            fontSize: "clamp(2rem, 4vw, 2.7rem)",
+            lineHeight: 1.1,
+          }}
+        >
+          Está vacío por ahora
+        </h2>
+
+        <p
+          style={{
+            margin: "0 auto 28px",
+            maxWidth: "440px",
+            color: "#5d4b42",
+            fontSize: "1.05rem",
+            lineHeight: 1.7,
+          }}
+        >
+          Descubrí nuestras fragancias y agregá tus favoritos para armar tu pedido
+          perfecto.
+        </p>
+
+        <Link
+          to="/products"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "14px 24px",
+            borderRadius: "999px",
+            background: "linear-gradient(135deg, #b3835d 0%, #7b4d38 100%)",
+            color: "#fff",
+            textDecoration: "none",
+            fontWeight: 700,
+            boxShadow: "0 16px 28px rgba(123, 77, 56, 0.24)",
+          }}
+        >
+          Ver fragancias
+        </Link>
+      </motion.section>
     );
   }
 
